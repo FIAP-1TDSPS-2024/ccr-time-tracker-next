@@ -1,0 +1,28 @@
+@media (max-width: 1360px) {
+  .stations {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .metrics {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .alert {
+    flex-direction: column;
+    height: 10rem;
+    width: 15rem;
+  }
+
+  .alertIcon {
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  .alertRoute {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+  }
+}
