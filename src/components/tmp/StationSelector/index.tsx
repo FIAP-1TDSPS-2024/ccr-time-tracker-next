@@ -1,3 +1,5 @@
+import "./styles.css";
+
 interface StationSelectorProps {
   stations: string[];
   onSelectAll: () => void;
@@ -20,7 +22,6 @@ export function StationSelector({
     if (selectedStations.length === 0 || selectedStations.length > 1) {
       onStationSelect([clickedStation]);
     } else {
-      // Select all stations between first selected and clicked station
       const start = Math.min(firstSelectedIndex, clickedIndex);
       const end = Math.max(firstSelectedIndex, clickedIndex);
       const stationsToSelect = stations.slice(start, end + 1);
@@ -41,7 +42,7 @@ export function StationSelector({
         <label htmlFor="selectAllStations">Selecionar todas as estações</label>
       </div>
 
-      <div className="flex overflow-auto w-[95%] h-16 mx-4 rounded-b">
+      <div className="flex justify-center overflow-auto w-[95%] h-16 mx-4 rounded-b StationSelector">
         {stations.map((station, index) => (
           <div key={station}>
             <input

@@ -31,8 +31,8 @@ export function AlertsList({ alerts }: AlertsListProps) {
                 height={50}
                 className="mr-4"
               />
-              <span>{alert.type}</span>
             </div>
+            <span className="text-center my-2">{alert.type}</span>
             <span className="mb-2 md:mb-0">{alert.status}</span>
             <span className="font-bold text-center md:text-left">
               {alert.route}
