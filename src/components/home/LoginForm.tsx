@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 interface LoginFormProps {
   onShowPopup: (title: string, message: string) => void;
@@ -18,7 +18,7 @@ export function LoginForm({ onShowPopup }: LoginFormProps) {
   };
 
   const handleSubmit = async () => {
-    if (email === "teste" && password === "1234") {
+    if (email === "teste@gmail.com" && password === "1234") {
       localStorage.setItem("logged", "true");
       document.cookie = "logged=true; path=/";
       router.push("/pesquisa");
@@ -54,11 +54,10 @@ export function LoginForm({ onShowPopup }: LoginFormProps) {
       />
 
       <button
-        className={`w-64 h-10 rounded-lg mt-2 font-semibold ${
-          validateForm()
+        className={`w-64 h-10 rounded-lg mt-2 font-semibold ${validateForm()
             ? "bg-[#476087] text-white cursor-pointer"
             : "bg-[#6e7d95] text-white cursor-not-allowed"
-        }`}
+          }`}
         onClick={handleSubmit}
         disabled={!validateForm()}
       >
