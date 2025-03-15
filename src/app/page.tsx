@@ -4,6 +4,13 @@ import { Footer } from "@/components/Footer";
 
 const students = [
   {
+    name: "Jonas de Jesus Campos de Oliveira",
+    rm: "561144",
+    image: "/Jonas.jpeg",
+    github: "https://github.com/jonasdasneves",
+    linkedin: "https://www.linkedin.com/in/jonas-campos-8bb8211b3",
+  },
+  {
     name: "Daniel Santana Corrêa Batista",
     rm: "559622",
     image: "/daniel.png",
@@ -17,7 +24,7 @@ const students = [
     github: "https://github.com/wendellnd",
     linkedin:
       "https://www.linkedin.com/in/wendell-nascimento-dourado-0760a3202/",
-  },
+  }
 ];
 
 export default function Home() {
