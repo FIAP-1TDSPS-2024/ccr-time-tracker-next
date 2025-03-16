@@ -14,7 +14,7 @@ export function AddItemPopup({
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
       <div className="bg-[#d9d9d9] p-12 rounded flex flex-col items-center w-[30rem]">
-        <h2 className="text-2xl font-bold mb-8">Adicionar novo item</h2>
+        <h2 className="text-2xl font-bold mb-8">Adicionar novo atalho</h2>
         <div className="flex flex-col gap-4 mb-8">
           <input
             type="text"

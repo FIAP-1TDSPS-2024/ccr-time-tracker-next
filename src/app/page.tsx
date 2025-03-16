@@ -24,7 +24,7 @@ const students = [
     github: "https://github.com/wendellnd",
     linkedin:
       "https://www.linkedin.com/in/wendell-nascimento-dourado-0760a3202/",
-  }
+  },
 ];
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
           </h1>
         </div>
 
-        <main className="flex flex-wrap justify-center items-center gap-4 p-4">
+        <main className="grid md:grid-cols-3 gap-4 p-4">
           {students.map((student) => (
             <StudentCard key={student.rm} {...student} />
           ))}
