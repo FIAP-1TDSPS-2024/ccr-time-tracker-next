@@ -24,3 +24,9 @@ Acesse [http://localhost:3000](http://localhost:3000) com seu browser para ver o
 Email: teste@gmail.com
 Senha: 1234
 ```
+
+#### Vídeo
+
+```
+https://youtu.be/JUZi-lIVmG8
+```
