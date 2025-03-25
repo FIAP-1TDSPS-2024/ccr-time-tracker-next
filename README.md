@@ -30,3 +30,9 @@ Senha: 1234
 ```
 https://youtu.be/JUZi-lIVmG8
 ```
+
+#### Github
+
+```
+https://github.com/FIAP-1TDSPS-2024/ccr-time-tracker-next
+```
