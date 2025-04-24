@@ -18,13 +18,36 @@ export function LoginForm({ onShowPopup }: LoginFormProps) {
   };
 
   const handleSubmit = async () => {
-    if (email === "teste@gmail.com" && password === "1234") {
-      localStorage.setItem("logged", "true");
-      document.cookie = "logged=true; path=/";
-      router.push("/pesquisa");
-    } else {
+    try {
+      const response = await fetch("/data/login.json", {
+        //method: "POST",
+        //body: JSON.stringify({
+        //  email,
+        //  password
+        //})
+      })
+
+      if (!response.ok) {
+        onShowPopup("Email ou senha incorretos.", "Corriga e tente novamente.");
+        return
+      }
+
+      const { login_success } = await response.json()
+      
+      if(login_success) {
+        localStorage.setItem("logged", "true");
+        document.cookie = "logged=true; path=/";
+        router.push("/pesquisa");
+      } else {
+        onShowPopup("Email ou senha incorretos.", "Corriga e tente novamente.");
+        return 
+      }
+    }catch(e) {
+      console.error(e)
       onShowPopup("Email ou senha incorretos.", "Corriga e tente novamente.");
+      return
     }
+ 
   };
 
   return (
