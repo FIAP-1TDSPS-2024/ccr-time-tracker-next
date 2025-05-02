@@ -24,7 +24,7 @@ export function CategoryList({
       <div className="flex flex-col md:flex-row md:flex-wrap">
         {items.map((item) => (
           <CategoryItem
-            key={item.name}
+            key={item.abreviacao}
             item={item}
             onFavoriteToggle={onFavoriteToggle}
             onDelete={onDelete}

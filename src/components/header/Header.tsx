@@ -23,6 +23,7 @@ export function Header({
 
   const handleExit = () => {
     localStorage.removeItem("logged");
+    localStorage.removeItem("userData");
     document.cookie = "logged=false; path=/";
     router.push("/home");
   };

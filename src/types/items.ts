@@ -1,6 +1,16 @@
 export interface Item {
-  name: string;
-  icon: string;
+  id_item: number;
+  nome: string;
+  abreviacao: string;
   url: string;
-  favorite: boolean;
+  favorito: boolean;
+  id_funcionario: number;
+  icon: string;
+}
+
+export interface ApiResponse<T> {
+  message: string;
+  code: string;
+  slug: string;
+  data: T;
 }

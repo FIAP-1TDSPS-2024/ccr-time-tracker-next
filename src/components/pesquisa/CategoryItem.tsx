@@ -18,7 +18,7 @@ export function CategoryItem({
       <div className="w-full md:w-[15.188rem] h-[8.5rem] bg-[#e6e6e6] mb-4 md:m-4 rounded shadow-md relative">
         <Image
           src={item.icon}
-          alt={item.name}
+          alt={item.abreviacao}
           width={48}
           height={48}
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
@@ -26,22 +26,22 @@ export function CategoryItem({
         <button
           onClick={(e) => {
             e.preventDefault();
-            onFavoriteToggle(item.name);
+            onFavoriteToggle(item.abreviacao);
           }}
           className="absolute top-2 left-2"
         >
           <Image
-            src={item.favorite ? "/star.svg" : "/star-disabled.svg"}
+            src={item.favorito ? "/star.svg" : "/star-disabled.svg"}
             alt="Favorite"
             width={24}
             height={24}
           />
         </button>
-        {item.name !== "TMP" && item.name !== "TEPP" && (
+        {item.abreviacao !== "TMP" && (
           <button
             onClick={(e) => {
               e.preventDefault();
-              onDelete(item.name);
+              onDelete(item.abreviacao);
             }}
             className="absolute top-2 right-2"
           >
@@ -49,7 +49,7 @@ export function CategoryItem({
           </button>
         )}
         <div className="absolute bottom-0 bg-[#585858] text-white font-bold w-full h-[1.938rem] px-2">
-          {item.name}
+          {item.abreviacao}
         </div>
       </div>
     </Link>

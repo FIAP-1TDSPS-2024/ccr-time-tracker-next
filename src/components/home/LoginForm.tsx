@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { LoginResponse } from "@/types/api";
 
 interface LoginFormProps {
   onShowPopup: (title: string, message: string) => void;
@@ -19,35 +20,47 @@ export function LoginForm({ onShowPopup }: LoginFormProps) {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("/data/login.json", {
-        //method: "POST",
-        //body: JSON.stringify({
-        //  email,
-        //  password
-        //})
-      })
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/funcionarios/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            senha: password,
+          }),
+        }
+      );
 
       if (!response.ok) {
         onShowPopup("Email ou senha incorretos.", "Corriga e tente novamente.");
-        return
+        return;
       }
 
-      const { login_success } = await response.json()
-      
-      if(login_success) {
+      const responseData: LoginResponse = await response.json();
+
+      if (responseData.slug === "success") {
+        // Store user data in localStorage
         localStorage.setItem("logged", "true");
+        localStorage.setItem("userData", JSON.stringify(responseData.data));
         document.cookie = "logged=true; path=/";
         router.push("/pesquisa");
-      } else {
-        onShowPopup("Email ou senha incorretos.", "Corriga e tente novamente.");
-        return 
+        return;
       }
-    }catch(e) {
-      console.error(e)
-      onShowPopup("Email ou senha incorretos.", "Corriga e tente novamente.");
-      return
+
+      if (responseData.slug === "bad_request") {
+        onShowPopup("Email ou senha incorretos.", "Corriga e tente novamente.");
+        return;
+      }
+
+      onShowPopup("Erro", "Ocorreu um erro inesperado ao tentar fazer login.");
+    } catch (e) {
+      console.error(e);
+      onShowPopup("Erro", "Ocorreu um erro inesperado ao tentar fazer login.");
+      return;
     }
- 
   };
 
   return (
@@ -77,10 +90,11 @@ export function LoginForm({ onShowPopup }: LoginFormProps) {
       />
 
       <button
-        className={`w-64 h-10 rounded-lg mt-2 font-semibold ${validateForm()
+        className={`w-64 h-10 rounded-lg mt-2 font-semibold ${
+          validateForm()
             ? "bg-[#476087] text-white cursor-pointer"
             : "bg-[#6e7d95] text-white cursor-not-allowed"
-          }`}
+        }`}
         onClick={handleSubmit}
         disabled={!validateForm()}
       >
