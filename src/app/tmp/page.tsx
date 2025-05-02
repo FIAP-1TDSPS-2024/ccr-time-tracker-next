@@ -9,6 +9,7 @@ import { StationSelector } from "@/components/tmp/StationSelector";
 import { MetricsGrid } from "@/components/tmp/MetricsGrid";
 import { AlertsList } from "@/components/tmp/AlertsList";
 import { Line, Metric, Alert } from "@/types/lines";
+import { UserData } from "@/types/user";
 
 const defaultLines = [
   {
@@ -73,6 +74,8 @@ export default function TMP() {
   const [selectedDate, setSelectedDate] = useState("");
   const [metrics, setMetrics] = useState<Metric[]>([]);
   const [selectedStations, setSelectedStations] = useState<string[]>([]);
+  const [userData, setUserData] = useState<UserData | null>(null);
+
   const [alerts] = useState<Alert[]>([
     {
       type: "Viagem muito longa",
@@ -86,6 +89,32 @@ export default function TMP() {
     },
   ]);
 
+  // Get user ID from localStorage
+  const getUserData = async () => {
+    try {
+      // Check if user is logged in
+      const isLogged = localStorage.getItem("logged") === "true";
+
+      if (!isLogged) {
+        throw new Error("User not logged in");
+      }
+
+      // Get user data from localStorage
+      const userDataStr = localStorage.getItem("userData");
+
+      if (!userDataStr) {
+        throw new Error("User data not found");
+      }
+
+      const userData: UserData = JSON.parse(userDataStr);
+      setUserData(userData);
+      return userData;
+    } catch (error) {
+      console.error("Error getting user ID:", error);
+      return null;
+    }
+  };
+
   useEffect(() => {
     const today = new Date();
     setSelectedDate(today.toISOString().split("T")[0]);
@@ -97,6 +126,8 @@ export default function TMP() {
     } else {
       setLines(JSON.parse(storedLines));
     }
+
+    getUserData();
   }, []);
 
   const handleLineChange = (lineNumber: string) => {
@@ -156,7 +187,11 @@ export default function TMP() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#d0d0d0]">
-      <Header pageName="Tempo médio de percurso" showBackButton />
+      <Header
+        pageName="Tempo médio de percurso"
+        userName={userData?.nome}
+        showBackButton
+      />
 
       <main className="flex-1">
         <section className="p-4">

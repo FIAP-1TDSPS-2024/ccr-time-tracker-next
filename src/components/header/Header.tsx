@@ -10,6 +10,7 @@ interface HeaderProps {
   showExitButton?: boolean;
   pageName?: string;
   onSearch?: (value: string) => void;
+  userName?: string;
 }
 
 export function Header({
@@ -18,6 +19,7 @@ export function Header({
   showExitButton = false,
   pageName,
   onSearch,
+  userName = "",
 }: HeaderProps) {
   const router = useRouter();
 
@@ -35,7 +37,7 @@ export function Header({
   return (
     <header className="w-full bg-[#616161] flex flex-col">
       <div className="flex items-center justify-between px-4 pb-4 mt-4">
-        <h3 className="text-2xl text-white font-bold">Olá, Wendell</h3>
+        <h3 className="text-2xl text-white font-bold">Olá, {userName}</h3>
         <div className="flex gap-2">
           {showBackButton && (
             <button

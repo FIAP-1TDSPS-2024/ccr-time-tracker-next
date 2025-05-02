@@ -17,86 +17,86 @@ export default function Pesquisa() {
     slug: "",
     url: "",
   });
-  const [userId, setUserId] = useState<number | null>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Get user ID from localStorage
+  const getUserId = async () => {
+    try {
+      // Check if user is logged in
+      const isLogged = localStorage.getItem("logged") === "true";
+
+      if (!isLogged) {
+        throw new Error("User not logged in");
+      }
+
+      // Get user data from localStorage
+      const userDataStr = localStorage.getItem("userData");
+
+      if (!userDataStr) {
+        throw new Error("User data not found");
+      }
+
+      const userData: UserData = JSON.parse(userDataStr);
+      setUserData(userData);
+      return userData;
+    } catch (error) {
+      console.error("Error getting user ID:", error);
+      setError("Failed to authenticate user. Please log in again.");
+      return null;
+    }
+  };
+
+  const fetchItems = async (id: number) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/itens/funcionario/${id}`
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch items: ${response.status}`);
+      }
+
+      const responseData: ApiResponse<Item[]> = await response.json();
+
+      if (responseData.slug !== "success") {
+        throw new Error(`API error: ${responseData.message}`);
+      }
+
+      // Transform API data to match our Item interface
+      const transformedItems = responseData.data.map((item: Item) => ({
+        ...item,
+        icon: "train.svg", // Default icon
+      }));
+
+      setItems(transformedItems);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+      setError("Failed to load items");
+
+      // Fallback to default items if API fails
+      const defaultItems = [
+        {
+          id_item: 1,
+          nome: "Tempo médio de percurso",
+          abreviacao: "TMP",
+          icon: "train.svg",
+          url: "https://example.com/item1",
+          favorito: true,
+          id_funcionario: id,
+        },
+      ];
+      setItems(defaultItems);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    // Get user ID from localStorage
-    const getUserId = async () => {
-      try {
-        // Check if user is logged in
-        const isLogged = localStorage.getItem("logged") === "true";
-
-        if (!isLogged) {
-          throw new Error("User not logged in");
-        }
-
-        // Get user data from localStorage
-        const userDataStr = localStorage.getItem("userData");
-
-        if (!userDataStr) {
-          throw new Error("User data not found");
-        }
-
-        const userData: UserData = JSON.parse(userDataStr);
-        setUserId(userData.id_funcionario);
-        return userData.id_funcionario;
-      } catch (error) {
-        console.error("Error getting user ID:", error);
-        setError("Failed to authenticate user. Please log in again.");
-        return null;
-      }
-    };
-
-    const fetchItems = async (id: number) => {
-      try {
-        setIsLoading(true);
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/itens/funcionario/${id}`
-        );
-
-        if (!response.ok) {
-          throw new Error(`Failed to fetch items: ${response.status}`);
-        }
-
-        const responseData: ApiResponse<Item[]> = await response.json();
-
-        if (responseData.slug !== "success") {
-          throw new Error(`API error: ${responseData.message}`);
-        }
-
-        // Transform API data to match our Item interface
-        const transformedItems = responseData.data.map((item: Item) => ({
-          ...item,
-          icon: "train.svg", // Default icon
-        }));
-
-        setItems(transformedItems);
-      } catch (error) {
-        console.error("Error fetching items:", error);
-        setError("Failed to load items");
-
-        // Fallback to default items if API fails
-        const defaultItems = [
-          {
-            id_item: 1,
-            nome: "Tempo médio de percurso",
-            abreviacao: "TMP",
-            icon: "train.svg",
-            url: "https://example.com/item1",
-            favorito: true,
-            id_funcionario: id,
-          },
-        ];
-        setItems(defaultItems);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    getUserId().then((id) => {
-      if (id) fetchItems(id);
+    getUserId().then((userData) => {
+      if (userData?.id_funcionario) fetchItems(userData?.id_funcionario);
     });
   }, []);
 
@@ -175,7 +175,7 @@ export default function Pesquisa() {
   };
 
   const handleAddItem = async () => {
-    if (!newItem.slug || !newItem.url || !userId) return;
+    if (!newItem.slug || !newItem.url || !userData?.id_funcionario) return;
 
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/itens`, {
@@ -188,7 +188,7 @@ export default function Pesquisa() {
           abreviacao: newItem.slug,
           url: newItem.url,
           favorito: false,
-          id_funcionario: userId,
+          id_funcionario: userData?.id_funcionario,
         }),
       });
 
@@ -203,9 +203,9 @@ export default function Pesquisa() {
       }
 
       // Refetch items to get the newly created item with its ID
-      if (userId) {
+      if (userData.id_funcionario) {
         const fetchResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/itens/funcionario/${userId}`
+          `${process.env.NEXT_PUBLIC_API_URL}/itens/funcionario/${userData.id_funcionario}`
         );
 
         if (fetchResponse.ok) {
@@ -233,7 +233,7 @@ export default function Pesquisa() {
         url: newItem.url,
         abreviacao: newItem.slug,
         favorito: false,
-        id_funcionario: userId,
+        id_funcionario: userData.id_funcionario,
       };
 
       setItems([...items, newItemForState]);
@@ -245,7 +245,7 @@ export default function Pesquisa() {
       // Fallback to local add if API fails
       const newItemData = {
         id_item: 0,
-        id_funcionario: userId,
+        id_funcionario: userData.id_funcionario,
         abreviacao: newItem.slug,
         nome: newItem.slug,
         icon: "train.svg",
@@ -261,7 +261,12 @@ export default function Pesquisa() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header showSearch onSearch={handleSearch} showExitButton />
+      <Header
+        showSearch
+        onSearch={handleSearch}
+        userName={userData?.nome}
+        showExitButton
+      />
 
       <main className="flex-1 px-4 md:mx-8 mt-4">
         {isLoading ? (
