@@ -1,38 +1,130 @@
-# ccr-time-tracker-next
+# 📚 CCR Time Tracker - Sistema de Monitoramento Ferroviário 🚂
 
-## Inicializando projeto
+Este projeto foi desenvolvido no contexto da disciplina _Front-End Design Engineering_, pertencente ao curso de Tecnologia em Análise e Desenvolvimento de Sistemas da **FIAP** (Faculdade de Informática e Administração Paulista). O principal objetivo foi aplicar conceitos práticos de desenvolvimento front-end com Next.js para criar uma solução moderna para o Centro de Controle Operacional (CCO) da CCR.
 
-Instale as dependendências:
+---
 
-```bash
-npm install
-```
+&nbsp;
 
-Inicie o servidor de desenvolvimento:
+## 🧩 Sobre o Negócio
 
-```bash
-npm run dev
-```
+A CCO (Centro de Controle Operacional) é um importante órgão dentro do sistema ferroviário metropolitano de São Paulo. Esse centro tem como objetivo:
 
-Acesse [http://localhost:3000](http://localhost:3000) com seu browser para ver o resultado.
+- Coordenar a operação diária do sistema ferroviário
+- Gerenciar a infraestrutura ferroviária
+- Supervisionar a segurança operacional
+- Estabelecer parâmetros de desempenho e indicadores de qualidade
 
-## Importante
+## 💡 Oportunidade Identificada
+
+No Centro de Controle Operacional (CCO) da CCR, a operação diária do monitoramento do tempo médio de percurso (TMP) entre as estações ferroviárias é uma tarefa crucial, especialmente durante os horários de pico. Atualmente, esse cálculo é realizado de forma manual, o que pode levar a ineficiências e possíveis erros.
+
+Nossa solução visa automatizar esse processo, permitindo:
+
+- Monitoramento em tempo real do tempo médio de percurso
+- Visualização de métricas importantes
+- Alertas de situações críticas
+- Interface amigável e responsiva
+
+---
+
+&nbsp;
+
+## 🧩 Tecnologias Utilizadas
+
+🌐 **FRONTEND**
+
+- **NEXTJS** — Framework React para SSR e geração estática
+  - TypeScript — Tipagem estática para JavaScript
+  - React Hooks — Gerenciamento de estado e ciclo de vida
+  - Tailwind CSS — Framework CSS utilitário
+  - Next Image — Otimização de imagens
+  - Fetch API — Comunicação com backend
+
+🛠️ **Ferramentas de Desenvolvimento**
+
+- **VS Code** — Ambiente de desenvolvimento
+- **Git/GitHub** — Controle de versão e hospedagem do projeto
+
+---
+
+&nbsp;
+
+## 🚀 Inicializando o Projeto
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/FIAP-1TDSPS-2024/ccr-time-tracker-next.git
+   cd ccr-time-tracker-next
+   ```
+
+2. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+3. Inicie o servidor de desenvolvimento:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Acesse [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
+
+---
+
+&nbsp;
+
+## 📱 Funcionalidades Principais
+
+- **Autenticação de usuários** — Sistema seguro de login
+- **Dashboard de monitoramento** — Visualização de métricas importantes
+- **Seleção de linhas e estações** — Filtragem de dados por linha e estação
+- **Alertas em tempo real** — Notificações de problemas operacionais
+- **Métricas de desempenho** — Dados sobre tempos médios de percurso
+
+---
+
+&nbsp;
+
+## 🧪 Estrutura do Projeto
+
+- `/src/app` — Páginas da aplicação
+- `/src/components` — Componentes reutilizáveis
+- `/src/types` — Interfaces TypeScript
+- `/public` — Ativos estáticos
+
+---
+
+&nbsp;
+
+## ⚠️ Importante
 
 #### Informações de login
 
 ```
-Email: teste@gmail.com
-Senha: 1234
+Email: rm559336@fiap.com.br
+Senha: 12345678
 ```
 
-#### Vídeo
+#### Vídeo de demonstração
 
 ```
 https://youtu.be/JUZi-lIVmG8
 ```
 
-#### Github
+#### Repositório GitHub
 
 ```
 https://github.com/FIAP-1TDSPS-2024/ccr-time-tracker-next
 ```
+
+---
+
+## 🧑‍💻 Desenvolvedores
+
+- Daniel Santana Corrêa Batista (RM: 559622)
+- Jonas de Jesus Campos de Oliveira (RM: 561144)
+- Wendell Nascimento Dourado (RM: 559336)
