@@ -50,6 +50,60 @@ Nossa solução visa automatizar esse processo, permitindo:
 
 &nbsp;
 
+## 📱 Funcionalidades Principais
+
+- **Autenticação de usuários** — Sistema seguro de login
+- **Dashboard de monitoramento** — Visualização de métricas importantes
+- **Seleção de linhas e estações** — Filtragem de dados por linha e estação
+- **Alertas em tempo real** — Notificações de problemas operacionais
+- **Métricas de desempenho** — Dados sobre tempos médios de percurso
+
+---
+
+&nbsp;
+
+## 🧪 Estrutura do Projeto
+
+- `/src/app` — Páginas da aplicação
+- `/src/components` — Componentes reutilizáveis
+- `/src/types` — Interfaces TypeScript
+- `/public` — Ativos estáticos
+
+---
+
+&nbsp;
+
+## ⚠️ Importante
+
+#### Credenciais de login
+
+```
+Email: rm559336@fiap.com.br
+Senha: 12345678
+```
+
+#### Vídeo de demonstração
+
+```
+https://youtu.be/JUZi-lIVmG8
+```
+
+#### Projeto em produção
+
+```
+https://ccr-time-tracker-next.vercel.app
+```
+
+#### Repositório GitHub
+
+```
+https://github.com/FIAP-1TDSPS-2024/ccr-time-tracker-next
+```
+
+---
+
+&nbsp;
+
 ## 🚀 Inicializando o Projeto
 
 1. Clone o repositório:
@@ -78,54 +132,6 @@ Nossa solução visa automatizar esse processo, permitindo:
    ```
 
 5. Acesse [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
-
----
-
-&nbsp;
-
-## 📱 Funcionalidades Principais
-
-- **Autenticação de usuários** — Sistema seguro de login
-- **Dashboard de monitoramento** — Visualização de métricas importantes
-- **Seleção de linhas e estações** — Filtragem de dados por linha e estação
-- **Alertas em tempo real** — Notificações de problemas operacionais
-- **Métricas de desempenho** — Dados sobre tempos médios de percurso
-
----
-
-&nbsp;
-
-## 🧪 Estrutura do Projeto
-
-- `/src/app` — Páginas da aplicação
-- `/src/components` — Componentes reutilizáveis
-- `/src/types` — Interfaces TypeScript
-- `/public` — Ativos estáticos
-
----
-
-&nbsp;
-
-## ⚠️ Importante
-
-#### Informações de login
-
-```
-Email: rm559336@fiap.com.br
-Senha: 12345678
-```
-
-#### Vídeo de demonstração
-
-```
-https://youtu.be/JUZi-lIVmG8
-```
-
-#### Repositório GitHub
-
-```
-https://github.com/FIAP-1TDSPS-2024/ccr-time-tracker-next
-```
 
 ---
 
