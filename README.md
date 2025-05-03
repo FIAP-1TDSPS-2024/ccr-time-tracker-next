@@ -65,13 +65,19 @@ Nossa solução visa automatizar esse processo, permitindo:
    npm install
    ```
 
-3. Inicie o servidor de desenvolvimento:
+3. Crie o arquivo .env com a variável de ambiente:
+
+   ```bash
+    NEXT_PUBLIC_API_URL=https://damp-gorge-72949-b2a133597f1e.herokuapp.com
+   ```
+
+4. Inicie o servidor de desenvolvimento:
 
    ```bash
    npm run dev
    ```
 
-4. Acesse [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
+5. Acesse [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
 
 ---
 
