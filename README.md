@@ -100,6 +100,14 @@ https://ccr-time-tracker-next.vercel.app
 https://github.com/FIAP-1TDSPS-2024/ccr-time-tracker-next
 ```
 
+### Repositório com Deploy na Vercel
+
+```
+https://github.com/wendellnd/ccr-time-tracker-next
+```
+
+- Obs: Na conta Hobby da Vercel só podemos fazer deploy em repositórios na conta do usuário. Fizemos um fork do repositório na conta do @wendellnd para configurar o deploy.
+
 ---
 
 &nbsp;
