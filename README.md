@@ -1,6 +1,6 @@
 # 📚 CCR Time Tracker - Sistema de Monitoramento Ferroviário 🚂
 
-Este projeto foi desenvolvido no contexto da disciplina _Front-End Design Engineering_, pertencente ao curso de Tecnologia em Análise e Desenvolvimento de Sistemas da **FIAP** (Faculdade de Informática e Administração Paulista). O principal objetivo foi aplicar conceitos práticos de desenvolvimento front-end com Next.js para criar uma solução moderna para o Centro de Controle Operacional (CCO) da CCR.
+Este projeto foi desenvolvido no contexto da disciplina _Front-End Design Engineering_, pertencente ao curso de Tecnologia em Análise e Desenvolvimento de Sistemas da **FIAP** (Faculdade de Informática e Administração Paulista). O principal objetivo foi aplicar conceitos práticos de desenvolvimento front-end com Next.js para criar uma solução moderna para o Centro de Controle Operacional (CCO) da CCR (Companhia de concessão de infraestrutura para mobilidade).
 
 ---
 
